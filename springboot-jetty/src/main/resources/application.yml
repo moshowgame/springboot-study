@@ -1,0 +1,98 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  jetty:
+    threads:
+      acceptors: 1
+      selectors: 4
+      max-queue-capacity: 1000
+      max: 1000
+      min: 20
+      idle-timeout: 30000
+    max-http-response-header-size: 1MB
+    max-http-form-post-size: 1MB
+    connection-idle-timeout: 30000
+    # Jetty压缩配置
+  compression:
+      enabled: true
+      mime-types: text/html,text/xml,text/plain,text/css,application/json,application/javascript
+      min-response-size: 1024
+
+# Spring Boot配置
+spring:
+  application:
+    name: springboot-jetty-demo
+  profiles:
+    active: dev
+    
+  # Jackson配置
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+      
+  # 日志配置
+  output:
+    ansi:
+      enabled: always
+      
+# 日志配置
+logging:
+  level:
+    root: INFO
+    com.example.jettydemo: DEBUG
+    org.eclipse.jetty: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/jetty-demo.log
+    max-size: 10MB
+    max-history: 30
+
+# Actuator监控配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env
+  endpoint:
+    health:
+      show-details: always
+#   metrics:
+#     export:
+#       simple:
+#         enabled: true
+
+# 自定义Jetty配置
+# jetty:
+#   custom:
+#     # 自定义线程池配置
+#     thread-pool:
+#       core-size: 20
+#       max-size: 200
+#       queue-capacity: 1000
+#       keep-alive-seconds: 60
+      
+#     # 自定义连接器配置
+#     connector:
+#       acceptor-threads: 2
+#       selector-threads: 4
+#       max-idle-time: 300000
+#       low-resources-max-idle-time: 60000
+      
+#     # 自定义SSL配置（如需要）
+#     ssl:
+#       enabled: false
+#       port: 8443
+#       key-store: 
+#       key-store-password: 
+#       key-store-type: JKS
