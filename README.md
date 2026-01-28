@@ -30,43 +30,17 @@ cd springboot-jetty
 mvn spring-boot:run
 # 访问: http://localhost:8080
 ```
+### [SpringBoot + DataHub](./springboot-datahub/)
+**状态**: ✅ 已完成
+**描述**: 
+一个用于聚合多国（UK/CN/IN）API数据的DataHub项目。
+**特性**:
+1. **多国数据聚合**: 同时调用UK、CN、IN三个地区的API，并将数据聚合
+2. **可配置的聚合策略**: 支持多种聚合方法（addUp、overwrite、merge等）
+3. **灵活的JSONPath配置**: 可以配置聚合的路径和方式
+4. **异步非阻塞**: 基于WebFlux实现高性能的异步调用
+5. **配置化管理**: 通过YAML文件管理聚合策略
 
----
-
-### [SpringBoot + Netty] 🚧
-**状态**: 计划中  
-**描述**: SpringBoot 与 Netty 异步网络框架集成  
-**技术栈**: SpringBoot + Netty + WebFlux  
-**计划功能**:
-- 异步非阻塞编程
-- WebSocket 实时通信
-- 高并发处理
-- 响应式编程模式
-
----
-
-
-### [SpringBoot + MyBatis] 🚧
-**状态**: 计划中  
-**描述**: SpringBoot 与 MyBatis 数据持久层框架集成  
-**技术栈**: SpringBoot + MyBatis + MySQL/PostgreSQL  
-**计划功能**:
-- 多数据源配置
-- 动态 SQL 优化
-- 事务管理
-- 缓存集成
-
----
-
-### [SpringBoot + Security] 🚧
-**状态**: 计划中  
-**描述**: SpringBoot 安全框架综合应用  
-**技术栈**: SpringBoot + Spring Security + JWT  
-**计划功能**:
-- 认证与授权
-- OAuth2 集成
-- API 安全防护
-- 角色权限管理
 
 ---
 
