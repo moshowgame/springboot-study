@@ -1,0 +1,40 @@
+aggregation:
+  strategies:
+    # Demo configuration for KPI total position
+    - name: uk-kpi-totalPosition
+      path: /api/uk/kpi/totalPosition
+      regions:
+        - uk
+        - cn
+        - in
+      aggregation-rules:
+        - path: "data"
+          strategy: addUp
+          merge-mode: deep
+      output-path: /datahub/uk/kpi/totalPosition
+
+    # Template for other APIs
+    - name: kpi-template
+      path: /api/{region}/kpi/{endpoint}
+      regions:
+        - uk
+        - cn
+        - in
+      aggregation-rules:
+        - path: "data"
+          strategy: addUp
+          merge-mode: deep
+      output-path: /datahub/{region}/kpi/{endpoint}
+
+    # Generic KPI endpoint for any region
+    - name: kpi-generic
+      path: /api/kpi/totalPosition
+      regions:
+        - uk
+        - cn
+        - in
+      aggregation-rules:
+        - path: "data"
+          strategy: addUp
+          merge-mode: deep
+      output-path: /datahub/kpi/totalPosition
